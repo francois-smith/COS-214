@@ -17,11 +17,17 @@ int main(){
     ClassD* d = new ClassD();
     std::cout << "" << std::endl;
 
+    std::cout << "Creating ClassE" << std::endl;
+    ClassE* e = new ClassE();
+    std::cout << "" << std::endl;
+
     std::cout << "Destructing Classes" << std::endl;
     delete a;
     delete b;
     delete c;
+    std::cout << "Destructing D" << std::endl;
     delete d;
+    delete e;
 
     return 0;
 }

@@ -41,37 +41,37 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = C$:/Users/steam/Desktop/University/COS-214/Practicals/Practical$ 1/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target Practical_1
+# Object build statements for EXECUTABLE target task
 
 
 #############################################
-# Order-only phony target for Practical_1
+# Order-only phony target for task
 
-build cmake_object_order_depends_target_Practical_1: phony || CMakeFiles/Practical_1.dir
+build cmake_object_order_depends_target_task: phony || CMakeFiles/task.dir
 
-build CMakeFiles/Practical_1.dir/Task_2/main.cpp.obj: CXX_COMPILER__Practical_1_Debug C$:/Users/steam/Desktop/University/COS-214/Practicals/Practical$ 1/Task$ 2/main.cpp || cmake_object_order_depends_target_Practical_1
-  DEP_FILE = CMakeFiles\Practical_1.dir\Task_2\main.cpp.obj.d
+build CMakeFiles/task.dir/Task_2/main.cpp.obj: CXX_COMPILER__task_Debug C$:/Users/steam/Desktop/University/COS-214/Practicals/Practical$ 1/Task$ 2/main.cpp || cmake_object_order_depends_target_task
+  DEP_FILE = CMakeFiles\task.dir\Task_2\main.cpp.obj.d
   FLAGS = -g -std=gnu++23
-  OBJECT_DIR = CMakeFiles\Practical_1.dir
-  OBJECT_FILE_DIR = CMakeFiles\Practical_1.dir\Task_2
+  OBJECT_DIR = CMakeFiles\task.dir
+  OBJECT_FILE_DIR = CMakeFiles\task.dir\Task_2
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target Practical_1
+# Link build statements for EXECUTABLE target task
 
 
 #############################################
-# Link the executable Practical_1.exe
+# Link the executable task.exe
 
-build Practical_1.exe: CXX_EXECUTABLE_LINKER__Practical_1_Debug CMakeFiles/Practical_1.dir/Task_2/main.cpp.obj
+build task.exe: CXX_EXECUTABLE_LINKER__task_Debug CMakeFiles/task.dir/Task_2/main.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\Practical_1.dir
+  OBJECT_DIR = CMakeFiles\task.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = Practical_1.exe
-  TARGET_IMPLIB = libPractical_1.dll.a
-  TARGET_PDB = Practical_1.exe.dbg
+  TARGET_FILE = task.exe
+  TARGET_IMPLIB = libtask.dll.a
+  TARGET_PDB = task.exe.dbg
 
 
 #############################################
@@ -99,7 +99,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build Practical_1: phony Practical_1.exe
+build task: phony task.exe
 
 # =============================================================================
 # Folder targets.
@@ -109,7 +109,7 @@ build Practical_1: phony Practical_1.exe
 #############################################
 # Folder: C:/Users/steam/Desktop/University/COS-214/Practicals/Practical 1/cmake-build-debug
 
-build all: phony Practical_1.exe
+build all: phony task.exe
 
 # =============================================================================
 # Built-in targets

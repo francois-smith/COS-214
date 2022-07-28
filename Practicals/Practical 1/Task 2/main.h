@@ -29,7 +29,7 @@ public:
         std::cout << "ClassC's Empty Constructor is Called" << std::endl;
     };
 
-    virtual ~ClassC(){
+    ~ClassC() override{
         std::cout << "ClassC's Destructor is Called" << std::endl;
     };
 };
@@ -40,7 +40,18 @@ public:
         std::cout << "ClassD's Empty Constructor is Called" << std::endl;
     };
 
-    virtual ~ClassD(){
+    ~ClassD() override{
         std::cout << "ClassD's Destructor is Called" << std::endl;
+    };
+};
+
+class ClassE: public ClassD{
+public:
+    ClassE(){
+        std::cout << "ClassE's Empty Constructor is Called" << std::endl;
+    };
+
+    ~ClassE() override{
+        std::cout << "ClassE's Destructor is Called" << std::endl;
     };
 };

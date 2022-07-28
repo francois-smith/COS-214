@@ -1,3 +1,6 @@
+#include "User.h"
+#include "UserManager.h"
+
 int main() {
   std::srand(static_cast<unsigned int>(std::time(NULL)));
   Run();

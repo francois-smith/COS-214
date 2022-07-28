@@ -1,5 +1,22 @@
 # ninja log v5
-0	624	6806397998296722	CMakeFiles/Practical_1.dir/main.cpp.obj	aad58085d845cbdd
-628	750	6806397999537846	Practical_1.exe	43bc1046b7921390
-1	621	6806408344021683	CMakeFiles/Practical_1.dir/Task_2/main.cpp.obj	f666eba88689f855
-623	712	6806408344897470	Practical_1.exe	cbb5f91ad8feaef9
+629	720	6806410497044486	Practical_1.exe	cbb5f91ad8feaef9
+604	693	6806411964841716	task3.exe	a01e7b48581a6abf
+13	221	6807002010761111	CMakeFiles/task.dir/Task_6/Snapshot.cpp.obj	d413556656b3ec07
+3	603	6806411963970918	CMakeFiles/task3.dir/Task_3/main.cpp.obj	e323791e8fdb3901
+1	740	6806411488201694	CMakeFiles/task2.dir/Task_2/main.cpp.obj	11dafd353f92160c
+742	844	6806411489272665	task2.exe	cd19dc28cdfb4065
+4	1228	6807002533275803	CMakeFiles/task.dir/Task_2/main.cpp.obj	f13208ed5544f938
+606	695	6806494266881556	task.exe	cd6aa4250a7220ed
+3	693	6806470105971743	CMakeFiles/task.dir/Task_3/main.cpp.obj	49f52a8070784155
+3	606	6806494266010755	CMakeFiles/task.dir/Task_4/main.cpp.obj	70b66bc0cdc63407
+24	212	6807002010731087	CMakeFiles/task.dir/Task_6/AuditableSnapshot.cpp.obj	dfac3e6f3bf06cae
+5	865	6807002017295375	CMakeFiles/task.dir/Task_6/User.cpp.obj	e4e135722788f72d
+1	205	6807008288376683	build.ninja	f8d6932061630a11
+4	724	6807008296313962	CMakeFiles/task.dir/Task_2/main.cpp.obj	f13208ed5544f938
+724	933	6807008298385863	task.exe	aa8d40f47cb5f39e
+3	622	6807011206345098	CMakeFiles/task.dir/Task_2/main.cpp.obj	f13208ed5544f938
+622	724	6807011207336015	task.exe	aa8d40f47cb5f39e
+3	687	6807011604540144	CMakeFiles/task.dir/Task_2/main.cpp.obj	f13208ed5544f938
+688	801	6807011605661170	task.exe	aa8d40f47cb5f39e
+3	609	6807012716623543	CMakeFiles/task.dir/Task_2/main.cpp.obj	f13208ed5544f938
+609	714	6807012717634478	task.exe	aa8d40f47cb5f39e
