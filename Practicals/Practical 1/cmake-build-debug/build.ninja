@@ -49,11 +49,11 @@ cmake_ninja_workdir = C$:/Users/steam/Desktop/University/COS-214/Practicals/Prac
 
 build cmake_object_order_depends_target_task: phony || CMakeFiles/task.dir
 
-build CMakeFiles/task.dir/Task_2/main.cpp.obj: CXX_COMPILER__task_Debug C$:/Users/steam/Desktop/University/COS-214/Practicals/Practical$ 1/Task$ 2/main.cpp || cmake_object_order_depends_target_task
-  DEP_FILE = CMakeFiles\task.dir\Task_2\main.cpp.obj.d
+build CMakeFiles/task.dir/Task_5/main.cpp.obj: CXX_COMPILER__task_Debug C$:/Users/steam/Desktop/University/COS-214/Practicals/Practical$ 1/Task$ 5/main.cpp || cmake_object_order_depends_target_task
+  DEP_FILE = CMakeFiles\task.dir\Task_5\main.cpp.obj.d
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = CMakeFiles\task.dir
-  OBJECT_FILE_DIR = CMakeFiles\task.dir\Task_2
+  OBJECT_FILE_DIR = CMakeFiles\task.dir\Task_5
 
 
 # =============================================================================
@@ -63,7 +63,7 @@ build CMakeFiles/task.dir/Task_2/main.cpp.obj: CXX_COMPILER__task_Debug C$:/User
 #############################################
 # Link the executable task.exe
 
-build task.exe: CXX_EXECUTABLE_LINKER__task_Debug CMakeFiles/task.dir/Task_2/main.cpp.obj
+build task.exe: CXX_EXECUTABLE_LINKER__task_Debug CMakeFiles/task.dir/Task_5/main.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\task.dir
