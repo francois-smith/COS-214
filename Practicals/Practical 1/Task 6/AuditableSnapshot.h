@@ -1,3 +1,5 @@
+#pragma once
+
 class AuditableSnapshot {
 public:
     virtual std::string GetUsername() const = 0;

@@ -1,20 +1,19 @@
-class UserManager {
+#pragma once
+
+#include <iostream>
+#include <list>
+#include "User.h"
+#include "AuditableSnapshot.h"
+
+class UserManager
+{
+private:
+    User* User_;
+    std::list<AuditableSnapshot*> Memento_;
+
 public:
-    UserManager(User *User) : User_(User) {;
-
-    }
-
-    void Backup() {
-        std::cout << "\nUserManager: Saving User's state...\n";
-
-    }
-
-    void Undo() {
-
-    }
-
-    void ShowHistory() const {
-        std::cout << "UserManager: Here's the list of historical changes:\n";
-
-    }
+    explicit UserManager(User *User);
+    void Backup();
+    void Undo();
+    void ShowHistory() const;
 };
