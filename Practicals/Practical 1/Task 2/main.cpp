@@ -1,6 +1,7 @@
 #include "main.h"
 
-int main(){
+int main()
+{
     std::cout << "Creating ClassA" << std::endl;
     ClassA* a = new ClassA();
     std::cout << "" << std::endl;
@@ -25,7 +26,6 @@ int main(){
     delete a;
     delete b;
     delete c;
-    std::cout << "Destructing D" << std::endl;
     delete d;
     delete e;
 

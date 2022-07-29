@@ -1,7 +1,12 @@
 #pragma once
 
+/**
+ * Generic calculator class
+ * @tparam T - Generic Type
+ */
 template <class T>
-class Calculator {
+class Calculator
+{
 private:
     T num1 , num2;
     

@@ -2,7 +2,8 @@
 #include <iostream>
 #include <string>
 
-int main(){
+int main()
+{
     //Question 3.2
     std::cout << "Question 3.2: " << std::endl;
     Calculator<int> two(741, 13);

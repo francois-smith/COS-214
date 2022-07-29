@@ -1,7 +1,8 @@
 #pragma once
 #include <iostream>
 
-class ClassA{
+class ClassA
+{
 public:
     ClassA(){
         std::cout << "ClassA's Empty Constructor is Called" << std::endl;
@@ -12,7 +13,8 @@ public:
     };
 };
 
-class ClassB{
+class ClassB
+{
 public:
     ClassB(){
         std::cout << "ClassB's Empty Constructor is Called" << std::endl;
@@ -23,7 +25,8 @@ public:
     };
 };
 
-class ClassC: public ClassA{
+class ClassC: public ClassA
+{
 public:
     ClassC(){
         std::cout << "ClassC's Empty Constructor is Called" << std::endl;
@@ -34,7 +37,8 @@ public:
     };
 };
 
-class ClassD: public ClassA, public ClassB{
+class ClassD: public ClassA, public ClassB
+{
 public:
     ClassD(){
         std::cout << "ClassD's Empty Constructor is Called" << std::endl;
@@ -45,7 +49,8 @@ public:
     };
 };
 
-class ClassE: public ClassD{
+class ClassE: public ClassD
+{
 public:
     ClassE(){
         std::cout << "ClassE's Empty Constructor is Called" << std::endl;
