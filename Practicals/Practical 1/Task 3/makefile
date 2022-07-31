@@ -1,5 +1,5 @@
 output: calculator.o main.o
-	g++ main.o calculator.o
+	g++ main.o calculator.o  -o output
 
 calculator.o: calculator.cpp calculator.h
 	g++ -c calculator.cpp

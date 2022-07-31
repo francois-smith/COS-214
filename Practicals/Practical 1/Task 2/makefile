@@ -1,5 +1,5 @@
 output: main.o
-	g++ main.o
+	g++ main.o -o output
 
 main.o: main.cpp main.h
 	g++ -c main.cpp

@@ -1,5 +1,5 @@
 output: User.o UserManager.o Snapshot.o AuditableSnapshot.o main.o
-	g++ main.o calculator.o
+	g++ main.o User.o UserManager.o AuditableSnapshot.o Snapshot.o -o output
 
 User.o: User.cpp User.h
 	g++ -c User.cpp
