@@ -1,4 +1,4 @@
-#include "snapshot.h"
+#include "Snapshot.h"
 
 Snapshot::Snapshot(const std::string &state) : state_(state)
 {
@@ -9,7 +9,7 @@ Snapshot::Snapshot(const std::string &state) : state_(state)
 
 std::string Snapshot::GetUsername() const
 {
-    return this->date_ + "(" + this->state_.substr(0, 9) + "...)";
+    return "'" + this->state_ +"': "+ this->date_;
 }
 
 std::string Snapshot::date() const
