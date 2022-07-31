@@ -1,6 +1,5 @@
 #pragma once
 
-#include <string>
 #include <ctime>
 #include "AuditableSnapshot.h"
 
