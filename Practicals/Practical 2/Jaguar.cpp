@@ -1,6 +1,6 @@
 #include "Jaguar.h"
 
-Jaguar::Jaguar(int hp, int dmg, std::string &atk, std::string &def) : Enemy(hp, dmg, atk, def) {}
+Jaguar::Jaguar(int hp, int dmg, std::string &atk, std::string &name, std::string &def) : Enemy(hp, dmg, atk, name,def) {}
 
 bool Jaguar::hitSquadMember(SquadMember* z)
 {

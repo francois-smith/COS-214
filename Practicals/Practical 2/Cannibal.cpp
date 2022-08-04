@@ -1,6 +1,6 @@
 #include "Cannibal.h"
 
-Cannibal::Cannibal(int hp, int dmg, std::string &atk, std::string &def) : Enemy(hp, dmg, atk, def) {}
+Cannibal::Cannibal(int hp, int dmg, std::string &atk, std::string &name, std::string &def) : Enemy(hp, dmg, atk, name,def) {}
 
 bool Cannibal::hitSquadMember(SquadMember* z)
 {

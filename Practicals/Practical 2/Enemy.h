@@ -10,12 +10,12 @@
  */
 class Enemy {
 public:
-    Enemy(int hp, int dmg, std::string& atk, std::string& def);
-    virtual ~Enemy() = 0;
+    Enemy(int hp, int dmg, std::string& atk, std::string& name, std::string& def);
     void attack(SquadMember* z);
     void setHP(int hp);
     int getHP() const;
     int getDmg() const;
+    std::string getName() const;
     std::string getAtk() const;
     std::string getDef() const;
     virtual bool hitSquadMember(SquadMember* z) = 0;
@@ -28,4 +28,5 @@ protected:
     int dmg;
     std::string atk;
     std::string def;
+    std::string name;
 };

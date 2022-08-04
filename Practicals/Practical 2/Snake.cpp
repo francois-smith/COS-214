@@ -1,6 +1,6 @@
 #include "Snake.h"
 
-Snake::Snake(int hp, int dmg, std::string &atk, std::string &def) : Enemy(hp, dmg, atk, def) {}
+Snake::Snake(int hp, int dmg, std::string &atk, std::string &name, std::string &def) : Enemy(hp, dmg, atk, name, def) {}
 
 bool Snake::hitSquadMember(SquadMember* z)
 {

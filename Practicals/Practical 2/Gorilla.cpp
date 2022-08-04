@@ -1,6 +1,6 @@
 #include "Gorilla.h"
 
-Gorilla::Gorilla(int hp, int dmg, std::string &atk, std::string &def) : Enemy(hp, dmg, atk, def) {}
+Gorilla::Gorilla(int hp, int dmg, std::string &atk, std::string &name, std::string &def) : Enemy(hp, dmg, atk, name,def) {}
 
 bool Gorilla::hitSquadMember(SquadMember* z)
 {

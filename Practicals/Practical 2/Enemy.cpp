@@ -1,11 +1,11 @@
 #include "Enemy.h"
 
-Enemy::Enemy(int hp, int dmg, std::string& atk, std::string& def)
-{
+Enemy::Enemy(int hp, int dmg, std::string& atk, std::string& name, std::string& def) {
     this->hp = hp;
     this->dmg = dmg;
     this->atk = atk;
     this->def = def;
+    this->name = name;
 }
 
 /**
