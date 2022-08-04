@@ -1,3 +1,10 @@
+/*
+ * CannibalFactory.cpp
+ *
+ *  Created on: 04 Aug 2022
+ *      Author: Francois Smith
+ */
+
 #include "CannibalFactory.h"
 #include "Cannibal.h"
 
