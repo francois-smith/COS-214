@@ -43,7 +43,10 @@ void SquadMember::setDmg(int newDmg)
     this->dmg = newDmg;
 }
 
-SquadMember *SquadMember::clone()
-{
-    return new SquadMember(this->hp, this->name, this->dmg);
+int SquadMember::getDamage() const {
+    return this->dmg;
+}
+
+void SquadMember::setDamage(int newDmg) {
+    this->dmg = newDmg;
 }
