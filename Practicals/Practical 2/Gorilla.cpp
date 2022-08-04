@@ -1,3 +1,10 @@
+/*
+ * Gorilla.cpp
+ *
+ *  Created on: 02 Aug 2022
+ *      Author: Francois Smith
+ */
+
 #include "Gorilla.h"
 
 Gorilla::Gorilla(int hp, int dmg, std::string &atk, std::string &name, std::string &def) : Enemy(hp, dmg, atk, name,def) {}
@@ -16,25 +23,24 @@ bool Gorilla::hitSquadMember(SquadMember* z)
     }
 }
 
+void Gorilla::celebrate()
+{
+    std::cout << "Player tried in vain trying to save him self." << std::endl;
+}
+
 bool Gorilla::getHit(SquadMember* z)
 {
     if(z == nullptr) return false;
 
     std::cout << "Roars and hits his chest in anger." << std::endl;
-    int health = this->getHP() - z->getDmg();
-    if(health <= 0)
+    this->setHP(this->getHP() - z->getDmg());
+    if(this->getHP() <= 0)
     {
         return true;
     }
     else {
-        this->setHP(health);
         return false;
     }
-}
-
-void Gorilla::celebrate()
-{
-    std::cout << "Player tried in vain trying to save him self." << std::endl;
 }
 
 void Gorilla::die()

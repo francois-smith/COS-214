@@ -1,3 +1,10 @@
+/*
+ * Jaguar.cpp
+ *
+ *  Created on: 02 Aug 2022
+ *      Author: Francois Smith
+ */
+
 #include "Jaguar.h"
 
 Jaguar::Jaguar(int hp, int dmg, std::string &atk, std::string &name, std::string &def) : Enemy(hp, dmg, atk, name,def) {}
@@ -16,6 +23,11 @@ bool Jaguar::hitSquadMember(SquadMember* z)
     }
 }
 
+void Jaguar::celebrate()
+{
+    std::cout << "Should have fought harder soldier." << std::endl;
+}
+
 bool Jaguar::getHit(SquadMember* z)
 {
     if(z == nullptr) return false;
@@ -29,11 +41,6 @@ bool Jaguar::getHit(SquadMember* z)
     else {
         return false;
     }
-}
-
-void Jaguar::celebrate()
-{
-    std::cout << "Should have fought harder soldier." << std::endl;
 }
 
 void Jaguar::die()
