@@ -1,30 +1,31 @@
 #pragma once
+#include "SquadMember.h"
+#include <string>
+#include <iostream>
 
-class SquadMember;
-
+/**
+ * Abstract class for all enemy types.
+ * Defines a base attack function that follows the same logic for all enemies.
+ *
+ */
 class Enemy {
 public:
-    Enemy();
-    ~Enemy();
-    void attack();
-    bool hitSquadMember(SquadMember* z);
-    void celebrate();
-    bool getHit(SquadMember* z);
-    void die();
-
-private:
-
-
-protected:
-
-
-public:
-
-
-private:
-
+    Enemy(int hp, int dmg, std::string& atk, std::string& def);
+    virtual ~Enemy() = 0;
+    void attack(SquadMember* z);
+    void setHP(int hp);
+    int getHP() const;
+    int getDmg() const;
+    std::string getAtk() const;
+    std::string getDef() const;
+    virtual bool hitSquadMember(SquadMember* z) = 0;
+    virtual bool getHit(SquadMember* z) = 0;
+    virtual void celebrate() = 0;
+    virtual void die() = 0;
 
 protected:
-    int HP;
-
+    int hp;
+    int dmg;
+    std::string atk;
+    std::string def;
 };
