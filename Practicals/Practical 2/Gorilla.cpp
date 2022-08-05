@@ -25,14 +25,14 @@ bool Gorilla::hitSquadMember(SquadMember* z)
 
 void Gorilla::celebrate()
 {
-    std::cout << "Player tried in vain trying to save him self." << std::endl;
+    std::cout << "Squad member tried in vain trying to save themself." << std::endl;
 }
 
 bool Gorilla::getHit(SquadMember* z)
 {
     if(z == nullptr) return false;
 
-    std::cout << "Roars and hits his chest in anger." << std::endl;
+    std::cout << "Gorilla roars and hits his chest in anger." << std::endl;
     this->setHP(this->getHP() - z->getDmg());
     if(this->getHP() <= 0)
     {
