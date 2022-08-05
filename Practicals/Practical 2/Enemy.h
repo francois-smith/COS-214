@@ -7,6 +7,8 @@
 
 #pragma once
 #include "SquadMember.h"
+#include "EnemyState.h"
+#include "EnemyMemento.h"
 #include <iostream>
 
 /**
@@ -31,16 +33,20 @@ public:
     void setDamage(int newDmg);
 
     std::string getName() const;
-    void setName(std::string newName);
+    void setName(std::string& newName);
 
     std::string getAtk() const;
-    void setAtk(std::string newAtk);
+    void setAtk(std::string& newAtk);
 
     std::string getDef() const;
-    void setDef(std::string newDef);
+    void setDef(std::string& newDef);
 
-    //Helper Function
-    std::string print();
+    //Helper Functions
+    void print() const;
+
+    //Memento Functions
+    void loadSave(EnemyMemento* const save);
+    EnemyMemento* saveGame();
 
 protected:
     //Template Functions
@@ -71,10 +77,14 @@ protected:
     virtual void die() = 0;
 
 private:
+    //Private Functions
+    EnemyState* genState();
+
     //Member Variables
     int hp;
     int dmg;
     std::string atk;
     std::string def;
     std::string name;
+    EnemyState* state;
 };
