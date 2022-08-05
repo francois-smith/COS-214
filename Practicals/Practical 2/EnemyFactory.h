@@ -10,6 +10,7 @@
 #include <ctime>
 #include <string>
 #include <random>
+#include <chrono>
 
 /**
  * Abstract factory class used to create enemies. \n
