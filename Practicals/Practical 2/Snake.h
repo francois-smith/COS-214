@@ -11,7 +11,7 @@
 
 /**
  * Subclass of Enemy, represents a Snake enemy type. \n
- * All methods are private to uphold the factory method and only factories can produce cannibals.
+ * All methods are private to uphold the factory method and only factories can produce snakes.
  */
 class Snake: public Enemy
 {

@@ -25,14 +25,14 @@ bool Snake::hitSquadMember(SquadMember* z)
 
 void Snake::celebrate()
 {
-    std::cout << "Player tried strongly till the end." << std::endl;
+    std::cout << "Squad member tried strongly till the end." << std::endl;
 }
 
 bool Snake::getHit(SquadMember* z)
 {
     if(z == nullptr) return false;
 
-    std::cout << "Slithers rapidly searching for safety and employs" << this->getDef() << "." << std::endl;
+    std::cout << "Snake slithers rapidly searching for safety and employs " << this->getDef() << "." << std::endl;
     this->setHP(this->getHP() - z->getDmg());
     if(this->getHP() <= 0)
     {
