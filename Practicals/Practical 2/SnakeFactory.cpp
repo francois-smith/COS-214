@@ -9,10 +9,13 @@
 #include "SnakeFactory.h"
 #include "Snake.h"
 
-Enemy *SnakeFactory::createEnemy(std::string attack, std::string defense)
+Enemy* SnakeFactory::createEnemy(std::string attack, std::string defense)
 {
-    std::default_random_engine generator;
-    std::normal_distribution<double> distribution(6.0,1.0);
+    unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
+    std::default_random_engine generator(seed1);
+    std::normal_distribution<float> distribution(6.0,1.0);
     std::string name = this->getName();
-    return new Snake(distribution(generator), 6, attack, name, defense);
+    int hp = (int) round(distribution(generator));
+    Snake* snake = new Snake(hp, 2, attack, name, defense);
+    return snake;
 }

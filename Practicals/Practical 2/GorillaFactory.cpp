@@ -10,8 +10,11 @@
 
 Enemy *GorillaFactory::createEnemy(std::string attack, std::string defense)
 {
-    std::default_random_engine generator;
+    std::random_device rand_dev;
+    std::mt19937 generator(rand_dev());
     std::uniform_int_distribution<int> distribution(4,12);
     std::string name = this->getName();
-    return new Gorilla(distribution(generator), 6, attack, name, defense);
+    int hp = (int) round(distribution(generator));
+    Gorilla* gorilla = new Gorilla(hp, 2, attack, name, defense);
+    return gorilla;
 }

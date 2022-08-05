@@ -8,9 +8,13 @@
 #include "CannibalFactory.h"
 #include "Cannibal.h"
 
-Enemy *CannibalFactory::createEnemy(std::string attack, std::string defense) {
-    std::default_random_engine generator;
-    std::uniform_int_distribution<int> distribution(30,8);
+Enemy *CannibalFactory::createEnemy(std::string attack, std::string defense)
+{
+    std::random_device rand_dev;
+    std::mt19937 generator(rand_dev());
+    std::uniform_int_distribution<int> distribution(8,30);
     std::string name = this->getName();
-    return new Cannibal(distribution(generator), 6, attack, name, defense);
+    int hp = (int) round(distribution(generator));
+    Cannibal* cannibal = new Cannibal(hp, 2, attack, name, defense);
+    return cannibal;
 }

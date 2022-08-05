@@ -10,8 +10,11 @@
 
 Enemy *JaguarFactory::createEnemy(std::string attack, std::string defense)
 {
-    std::default_random_engine generator;
+    unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
+    std::default_random_engine generator(seed1);
     std::normal_distribution<double> distribution(10.0,3.0);
     std::string name = this->getName();
-    return new Jaguar(distribution(generator), 6, attack, name, defense);
+    int hp = (int) round(distribution(generator));
+    Jaguar* jaguar = new Jaguar(hp, 2, attack, name, defense);
+    return jaguar;
 }
