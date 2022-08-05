@@ -25,7 +25,7 @@ bool Cannibal::hitSquadMember(SquadMember* z)
 
 void Cannibal::celebrate()
 {
-    std::cout << "Shakes his " << this->getAtk() << " at the player’s remains." << std::endl;
+    std::cout << "Cannibal shakes his " << this->getAtk() << " at the squad member's remains." << std::endl;
 }
 
 bool Cannibal::getHit(SquadMember* z)
@@ -45,6 +45,5 @@ bool Cannibal::getHit(SquadMember* z)
 
 void Cannibal::die()
 {
-    std::cout << "Screams with his last breath, “I am your father’." << std::endl;
-    delete this;
+    std::cout << "Cannibal screams with his last breath, 'I am your father'." << std::endl;
 }
