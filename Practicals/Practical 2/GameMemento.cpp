@@ -1,16 +1,16 @@
 /*
- * EnemyMemento.cpp
+ * GameMemento.cpp
  *
  *  Created on: 07 Aug 2022
  *      Author: Francois Smith
  */
 
-#include "EnemyMemento.h"
+#include "GameMemento.h"
 
 /**
  * @brief Enemy Memento class. Stores state object, which contains all values for enemy.
  */
-EnemyMemento::EnemyMemento(EnemyState *state)
+GameMemento::GameMemento(GameState* state)
 {
     this->state = state;
 }
@@ -18,7 +18,7 @@ EnemyMemento::EnemyMemento(EnemyState *state)
 /**
  * @brief Clears memory used to store the state.
  */
-EnemyMemento::~EnemyMemento()
+GameMemento::~GameMemento()
 {
     delete this->state;
 }
@@ -26,7 +26,7 @@ EnemyMemento::~EnemyMemento()
 /**
  * @brief Setter for the state stored in the memento.
  */
-void EnemyMemento::setState(EnemyState* newState)
+void GameMemento::setState(GameState* newState)
 {
     this->state = newState;
 }
@@ -35,7 +35,7 @@ void EnemyMemento::setState(EnemyState* newState)
  * @brief Getter for the state stored in the memento.
  * @return State stored in the memento.
  */
-EnemyState* EnemyMemento::getState() const
+GameState* GameMemento::getState() const
 {
     return this->state;
 }
