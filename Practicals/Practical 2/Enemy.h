@@ -8,7 +8,6 @@
 #pragma once
 #include "SquadMember.h"
 #include "EnemyState.h"
-#include "EnemyMemento.h"
 #include <iostream>
 
 /**
@@ -20,7 +19,7 @@ class Enemy
 public:
     //Constructor and Destructor
     Enemy(int hp, int dmg, std::string& atk, std::string& name, std::string& def);
-    virtual ~Enemy();
+    virtual ~Enemy() = default;
 
     //Template Method
     void attack(SquadMember* z);
@@ -45,41 +44,38 @@ public:
     void print() const;
 
     //Memento Functions
-    void loadSave(EnemyMemento* const save);
-    EnemyMemento* saveGame();
+    void loadSave(EnemyState* save);
+    EnemyState* saveGame();
 
 protected:
     //Template Functions
     /**
-     * The enemy hits the squad member by calling the SquadMember's takeDamage method,
-     * this method takes the damage done by the enemy as a parameter.
+     * @brief The enemy hits the squad member by calling the SquadMember's takeDamage method,
+     * @brief this method takes the damage done by the enemy as a parameter.
      * @param z - SquadMember to Attack
      * @return true if the squad member is killed, false otherwise
      */
     virtual bool hitSquadMember(SquadMember* z) = 0;
 
     /**
-     * Called when SquadMember is still alive after being hit by an enemy. \n
-     * Damages the current enemy by retrieving the squad members damage value. The value is then subtracted from the current enemy's HP.
+     * @brief Called when SquadMember is still alive after being hit by an enemy. \n
+     * @brief Damages the current enemy by retrieving the squad members damage value. The value is then subtracted from the current enemy's HP.
      * @param z - SquadMember Attacking
      * @return if the enemy is killed
      */
     virtual bool getHit(SquadMember* z) = 0;
 
     /**
-     * Generic function that is called when the enemy is killed. Outputs a celebratory message.
+     * @brief Generic function that is called when the enemy is killed. Outputs a celebratory message.
      */
     virtual void celebrate() = 0;
 
     /**
-     * If SquadMember kills an enemy a death message is outputted
+     * @brief If SquadMember kills an enemy a death message is outputted
      */
     virtual void die() = 0;
 
 private:
-    //Private Functions
-    EnemyState* genState();
-
     //Member Variables
     int hp;
     int dmg;
@@ -87,4 +83,7 @@ private:
     std::string def;
     std::string name;
     EnemyState* state;
+
+    //Used for debugging purposes
+    friend void debugGame();
 };

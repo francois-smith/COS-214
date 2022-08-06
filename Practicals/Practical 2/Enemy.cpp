@@ -7,6 +7,14 @@
 
 #include "Enemy.h"
 
+/**
+ * @brief Default constructor for the Enemy class.
+ * @param hp - Enemy's HP
+ * @param dmg - Enemy's Damage
+ * @param atk  - Enemy's Attack Move
+ * @param name - Enemy's Name
+ * @param def - Enemy's Defense Move
+ */
 Enemy::Enemy(int hp, int dmg, std::string& atk, std::string& name, std::string& def)
 {
     this->hp = hp;
@@ -14,31 +22,34 @@ Enemy::Enemy(int hp, int dmg, std::string& atk, std::string& name, std::string& 
     this->atk = atk;
     this->name = name;
     this->def = def;
-}
-
-Enemy::~Enemy()
-{
-
+    this->state = nullptr;
 }
 
 /**
- * Implements the attack logic for each derived class.
- * Runs specific steps that uses functions defined in lower level classes.
+ * @brief Implements the attack logic for each derived class.
+ * @brief Runs specific functions that are defined in lower level classes.
  * @param z - The SquadMember to attack.
  */
 void Enemy::attack(SquadMember *z)
 {
+    //Checks that the enemy and squad member are not dead.
     while(z->getHP() > 0 and this->getHP() > 0)
     {
+        //If squad member dies from attack
         if(hitSquadMember(z))
         {
+            //Prints that the squad member is dead. And let enemy celebrate.
             z->die();
             celebrate();
             return;
         }
+        //Else if squad member survives attack
         else
         {
+            //Squad member counter-attacks
             std::cout << z->getName() << " survived and counterattacks, dealing " << z->getDmg() << " damage." << std::endl;
+
+            //If attack kills the enemy
             if(getHit(z))
             {
                 die();
@@ -49,7 +60,7 @@ void Enemy::attack(SquadMember *z)
 }
 
 /**
- * Sets the new HP value of the enemy.
+ * @brief Sets the new HP value of the enemy.
  * @param newHp - New Value
  */
 void Enemy::setHP(int newHp)
@@ -58,7 +69,7 @@ void Enemy::setHP(int newHp)
 }
 
 /**
- * Returns the current HP value of the enemy.
+ * @brief Returns the current HP value of the enemy.
  * @return Current HP value.
 */
 int Enemy::getHP() const
@@ -67,7 +78,7 @@ int Enemy::getHP() const
 }
 
 /**
- * Returns the damage value of the enemy.
+ * @brief Returns the damage value of the enemy.
  * @return Damage value.
 */
 int Enemy::getDmg() const
@@ -76,7 +87,7 @@ int Enemy::getDmg() const
 }
 
 /**
- * Sets the new Damage value of the enemy.
+ * @brief Sets the new Damage value of the enemy.
  * @param newDmg - New Damage Value
  */
 void Enemy::setDamage(int newDmg)
@@ -85,7 +96,7 @@ void Enemy::setDamage(int newDmg)
 }
 
 /**
- * Returns the attack move of the enemy.
+ * @brief Returns the attack move of the enemy.
  * @return  Attack Move
  */
 std::string Enemy::getAtk() const
@@ -94,7 +105,7 @@ std::string Enemy::getAtk() const
 }
 
 /**
- * Sets the new Attack move of the enemy.
+ * @brief Sets the new Attack move of the enemy.
  * @param newAtk - New Attack Property
  */
 void Enemy::setAtk(std::string& newAtk)
@@ -103,7 +114,7 @@ void Enemy::setAtk(std::string& newAtk)
 }
 
 /**
- * Returns the defense move of the enemy.
+ * @brief Returns the defense move of the enemy.
  * @return Defense Move
  */
 std::string Enemy::getDef() const
@@ -112,7 +123,7 @@ std::string Enemy::getDef() const
 }
 
 /**
- * Sets the new Defence move of the enemy.
+ * @brief Sets the new Defence move of the enemy.
  * @param newDef - New Defence Property
  */
 void Enemy::setDef(std::string& newDef)
@@ -121,7 +132,7 @@ void Enemy::setDef(std::string& newDef)
 }
 
 /**
- * Returns the name of the enemy.
+ * @brief Returns the name of the enemy.
  * @return Name of Enemy
  */
 std::string Enemy::getName() const
@@ -130,7 +141,7 @@ std::string Enemy::getName() const
 }
 
 /**
- * Sets the new Name move of the enemy.
+ * @brief Sets the new Name move of the enemy.
  * @param newName - New Name
  */
 void Enemy::setName(std::string& newName)
@@ -139,7 +150,7 @@ void Enemy::setName(std::string& newName)
 }
 
 /**
- * Prints the enemy's name, Damage and HP.
+ * @brief Prints the enemy's Damage and HP.
  */
 void Enemy::print() const
 {
@@ -149,20 +160,29 @@ void Enemy::print() const
 }
 
 /*
- * Loads latest save from enemy memento.
+ * @brief Loads save from state.
  */
-void Enemy::loadSave(EnemyMemento* const save)
+void Enemy::loadSave(EnemyState* const save)
 {
-    state = save->getState();
+    state = save;
+    this->setDamage(this->state->getDmg());
+    this->setHP(this->state->getHp());
+
+    std::string saveName = this->state->getName();
+    this->setName(saveName);
+
+    std::string saveAtk = this->state->getName();
+    this->setAtk(saveAtk);
+
+    std::string saveDef = this->state->getName();
+    this->setDef(saveDef);
 }
 
 /**
- * Saves current state of enemy.
- * @return EnemyMemento containing current state of enemy.
+ * @brief Saves current state of enemy.
+ * @return State of Enemy.
  */
-EnemyMemento* Enemy::saveGame()
+EnemyState* Enemy::saveGame()
 {
-    EnemyMemento* newSave = new EnemyMemento(state);
-    newSave->setState(new EnemyState(hp, dmg, atk, def, name));
-    return newSave;
+    return new EnemyState(hp, dmg, atk, def, name);
 }
