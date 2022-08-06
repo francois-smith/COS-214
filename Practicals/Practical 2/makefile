@@ -1,12 +1,12 @@
 main:
-    g++ -c *.cpp
-    g++ -o Main *.o
+	g++ -c *.cpp
+	g++ -o main *.o
 
 run: main
-    ./main
+	./main
 
 clean:
-    rm *.o main
+	rm *.o main
 
 reset: 
 	make clean
