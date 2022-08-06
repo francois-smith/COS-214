@@ -8,7 +8,7 @@
 #include "Mercenary.h"
 
 /**
- * Base constructor class for Mercenary, generates random name, damage and hp values.
+ * @brief Base constructor class for Mercenary, generates random name, damage and hp values.
  */
 Mercenary::Mercenary()
 {
@@ -32,8 +32,8 @@ Mercenary::Mercenary()
 }
 
 /**
- * Constructor for the Mercenary class. Defines Damage and HP values. \n
- * Used in clone method to create an exact copy of the Mercenary except for name field.
+ * @brief Constructor for the Mercenary class. Defines Damage and HP values. \n
+ * @brief Used in clone method to create an exact copy of the Mercenary except for name field.
  * @param hp - HP of Mercenary
  * @param dmg - Damage of Mercenary
  */
@@ -45,8 +45,8 @@ Mercenary::Mercenary(int hp, int dmg): SquadMember(hp, dmg)
 }
 
 /**
- * Constructor for the Mercenary class. Defines Damage, HP and name values. \n
- * Used when constructing a specific mercenary with pre set stats and name.
+ * @brief Constructor for the Mercenary class. Defines Damage, HP and name values. \n
+ * @brief Used when constructing a specific mercenary with pre set stats and name.
  * @param hp - HP of Mercenary
  * @param dmg - Damage of Mercenary
  * @param name - Name of Mercenary

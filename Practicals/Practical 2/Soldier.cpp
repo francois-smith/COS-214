@@ -8,7 +8,7 @@
 #include "Soldier.h"
 
 /**
- * Base constructor class for Soldier, generates random name, damage and hp values.
+ * @brief Base constructor class for Soldier, generates random name, damage and hp values.
  */
 Soldier::Soldier()
 {
@@ -32,8 +32,8 @@ Soldier::Soldier()
 }
 
 /**
- * Constructor for the Soldier class. Defines Damage and HP values. \n
- * Used in clone method to create an exact copy of the Soldier except for name field.
+ * @brief Constructor for the Soldier class. Defines Damage and HP values. \n
+ * @brief Used in clone method to create an exact copy of the Soldier except for name field.
  * @param hp - HP of Soldier
  * @param dmg - Damage of Soldier
  */
@@ -45,8 +45,8 @@ Soldier::Soldier(int hp, int dmg): SquadMember(hp, dmg)
 }
 
 /**
- * Constructor for the Soldier class. Defines Damage, HP and name values. \n
- * Used when constructing a specific Soldier with pre set stats and name.
+ * @brief Constructor for the Soldier class. Defines Damage, HP and name values. \n
+ * @brief Used when constructing a specific Soldier with pre set stats and name.
  * @param hp - HP of Soldier
  * @param dmg - Damage of Soldier
  * @param name - Name of Soldier
