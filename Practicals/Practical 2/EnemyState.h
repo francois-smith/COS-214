@@ -9,7 +9,7 @@
 #include <string>
 
 /**
- * @brief EnemyState class. Contains all values that need to be saved for an enemy.
+ * EnemyState class. Contains all values that need to be saved for an enemy.
  */
 class EnemyState
 {
@@ -21,9 +21,11 @@ private:
     std::string name;
 
 public:
+    //Constructor and Destructor
     EnemyState(int hp, int dmg, std::string& atk, std::string& def, std::string& name);
-    virtual ~EnemyState() = default;
+    ~EnemyState() = default;
 
+    //Getters
     int getHp() const;
     int getDmg() const;
     std::string getAtk() const;
