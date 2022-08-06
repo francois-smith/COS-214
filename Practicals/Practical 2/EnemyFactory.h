@@ -25,16 +25,21 @@ public:
 
     //Factory Method
     /**
-     * Creates and returns a pointer to a new Enemy. \n
-     * Returns base class type to allow numerous types of enemies to be stored in a single array.
+     * @brief Creates and returns a pointer to a new Enemy. \n
+     * @brief Returns base class type to allow numerous types of enemies to be stored in a single array.
      * @param attack - Attack Value Of Enemy
-     * @param defense - Defence Value Of Enemy
+     * @param defense - Defense Value Of Enemy
      * @return Pointer to newly created enemy
      */
     virtual Enemy* createEnemy(std::string attack, std::string defense) = 0;
 
 protected:
     //Helper Functions
-    std::string getName();
+
+    /**
+     * @brief Generates a name for an enemy.
+     * @return Generated Name
+    */
+    virtual std::string getName() = 0;
 };
 
