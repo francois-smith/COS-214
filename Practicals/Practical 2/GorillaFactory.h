@@ -15,4 +15,7 @@
 class GorillaFactory: public EnemyFactory {
 public:
     Enemy* createEnemy (std::string attack, std::string defense) override;
+
+protected:
+    std::string getName() override;
 };

@@ -8,6 +8,10 @@
 #include "JaguarFactory.h"
 #include "Jaguar.h"
 
+std::string JaguarFactory::getName() {
+    return "Jaguar";
+}
+
 Enemy *JaguarFactory::createEnemy(std::string attack, std::string defense)
 {
     unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();

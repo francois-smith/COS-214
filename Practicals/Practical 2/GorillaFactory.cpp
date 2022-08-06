@@ -8,6 +8,10 @@
 #include "GorillaFactory.h"
 #include "Gorilla.h"
 
+std::string GorillaFactory::getName() {
+    return "Gorilla";
+}
+
 Enemy *GorillaFactory::createEnemy(std::string attack, std::string defense)
 {
     std::random_device rand_dev;

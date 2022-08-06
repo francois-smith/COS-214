@@ -8,6 +8,10 @@
 #include "CannibalFactory.h"
 #include "Cannibal.h"
 
+std::string CannibalFactory::getName() {
+    return "Cannibal";
+}
+
 Enemy *CannibalFactory::createEnemy(std::string attack, std::string defense)
 {
     std::random_device rand_dev;

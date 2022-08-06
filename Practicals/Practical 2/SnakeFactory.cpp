@@ -9,6 +9,10 @@
 #include "SnakeFactory.h"
 #include "Snake.h"
 
+std::string SnakeFactory::getName() {
+    return "Snake";
+}
+
 Enemy* SnakeFactory::createEnemy(std::string attack, std::string defense)
 {
     unsigned seed1 = std::chrono::system_clock::now().time_since_epoch().count();
