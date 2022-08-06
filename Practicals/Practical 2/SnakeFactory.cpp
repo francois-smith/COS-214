@@ -3,9 +3,8 @@
  *
  *  Created on: 04 Aug 2022
  *      Author: Francois Smith
- */
+*/
 
-#pragma once
 #include "SnakeFactory.h"
 #include "Snake.h"
 
