@@ -19,9 +19,13 @@ class Cannibal: public Enemy
     Cannibal(int hp, int dmg, std::string& atk, std::string& name, std::string& def);
 
     //Template Methods
+
     bool hitSquadMember(SquadMember* z) override;
     bool getHit(SquadMember* z) override;
     void celebrate() override;
     void die() override;
     friend class CannibalFactory;
+
+    //Used for debugging purposes
+    friend void debugGame();
 };
