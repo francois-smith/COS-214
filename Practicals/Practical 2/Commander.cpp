@@ -8,7 +8,7 @@
 #include "Commander.h"
 
 /**
- * Base constructor class for commander, generates random name, damage and hp values.
+ * @brief Base constructor class for commander, generates random name, damage and hp values.
  */
 Commander::Commander()
 {
@@ -32,8 +32,8 @@ Commander::Commander()
 }
 
 /**
- * Constructor for the Commander class. Defines Damage and HP values. \n
- * Used in clone method to create an exact copy of the Commander except for name field.
+ * @brief Constructor for the Commander class. Defines Damage and HP values. \n
+ * @brief Used in clone method to create an exact copy of the Commander except for name field.
  * @param hp - HP of Commander
  * @param dmg - Damage of Commander
  */
@@ -45,8 +45,8 @@ Commander::Commander(int hp, int dmg): SquadMember(hp, dmg)
 }
 
 /**
- * Constructor for the Commander class. Defines Damage, HP and name values. \n
- * Used when constructing a specific commander with pre set stats and name.
+ * @brief Constructor for the Commander class. Defines Damage, HP and name values. \n
+ * @brief Used when constructing a specific commander with pre set stats and name.
  * @param hp - HP of Commander
  * @param dmg - Damage of Commander
  * @param name - Name of Commander

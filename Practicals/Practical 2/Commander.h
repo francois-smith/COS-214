@@ -16,10 +16,14 @@ class Commander: public SquadMember
 {
 public:
     //Constructor and Prototype Methods
+
     Commander();
     Commander(int hp, int dmg);
     Commander(int hp, int dmg, std::string& name);
 
     SquadMember* clone() override;
     std::string generateName() override;
+
+    //Used for debugging purposes
+    friend void debugGame();
 };
