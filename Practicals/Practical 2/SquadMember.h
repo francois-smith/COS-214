@@ -6,6 +6,7 @@
  */
 
 #pragma once
+#include "SquadMemberState.h"
 #include <iostream>
 #include <string>
 #include <random>
@@ -17,7 +18,7 @@
 class SquadMember
 {
 public:
-    //s and Destructor
+    //Constructors and Destructor
     SquadMember() = default;
     SquadMember(int hp, int dmg);
     SquadMember(int hp, int dmg, std::string& name);
@@ -42,7 +43,7 @@ public:
 
     //Template and Prototype Functions
     /**
-     * Virtual clone method implemented within sub SquadMember classes.
+     * @brief Virtual clone method implemented within derived SquadMember classes.
      * @return - Pointer to a new SquadMember object.
      */
     virtual SquadMember* clone() = 0;
@@ -51,10 +52,15 @@ public:
     //Helper Function
     void printStats() const;
 
+    //Memento Functions
+    void loadSave(SquadMemberState* const save);
+    SquadMemberState* saveGame();
+
 private:
     //Member Variables
     std::string type;
     std::string name;
     int dmg;
     int hp;
+    SquadMemberState* state;
 };

@@ -11,16 +11,18 @@ SquadMember::SquadMember(int hp, int dmg)
 {
     this->hp = hp;
     this->dmg = dmg;
+    this->state = nullptr;
 }
 
 SquadMember::SquadMember(int hp, int dmg, std::string& name) {
     this->hp = hp;
     this->dmg = dmg;
     this->name = name;
+    this->state = nullptr;
 }
 
 /**
- * Returns the current Damage value of the enemy.
+ * @brief Returns the current Damage value of the enemy.
  * @return Current Damage value.
 */
 int SquadMember::getDmg() const
@@ -29,7 +31,7 @@ int SquadMember::getDmg() const
 }
 
 /**
- * Sets the new Damage value of the SquadMember.
+ * @brief Sets the new Damage value of the SquadMember.
  * @param newDmg - New Damage Value
  */
 void SquadMember::setDmg(int newDmg)
@@ -38,34 +40,7 @@ void SquadMember::setDmg(int newDmg)
 }
 
 /**
- * Sets the new HP value of the SquadMember.
- * @param newHp - New HP Value
- */
-void SquadMember::setHP(int newHp)
-{
-    this->hp = newHp;
-}
-
-/**
- * Sets the new name of the SquadMember.
- * @param newName - New Name
- */
-void SquadMember::setName(std::string& newName)
-{
-    this->name = newName;
-}
-
-/**
- * Returns the current name of the SquadMember.
- * @return Current name
-*/
-std::string SquadMember::getName() const
-{
-    return this->name;
-}
-
-/**
- * Returns the current HP value of the SquadMember.
+ * @brief Returns the current HP value of the SquadMember.
  * @return Current HP value.
 */
 int SquadMember::getHP() const
@@ -74,7 +49,34 @@ int SquadMember::getHP() const
 }
 
 /**
- * Returns the type of SquadMember.
+ * @brief Sets the new HP value of the SquadMember.
+ * @param newHp - New HP Value
+ */
+void SquadMember::setHP(int newHp)
+{
+    this->hp = newHp;
+}
+
+/**
+ * @brief Returns the current name of the SquadMember.
+ * @return Current name
+*/
+std::string SquadMember::getName() const
+{
+    return this->name;
+}
+
+/**
+ * @brief Sets the new name of the SquadMember.
+ * @param newName - New Name
+ */
+void SquadMember::setName(std::string& newName)
+{
+    this->name = newName;
+}
+
+/**
+ * @brief Returns the type of SquadMember.
  * @return Type.
 */
 std::string SquadMember::getType() const
@@ -83,7 +85,7 @@ std::string SquadMember::getType() const
 }
 
 /**
- * Sets type of SquadMember.
+ * @brief Sets type of SquadMember.
  * @param newType - New Type
 */
 void SquadMember::setType(std::string &newType)
@@ -92,8 +94,7 @@ void SquadMember::setType(std::string &newType)
 }
 
 /**
- * Outputs death message when a SquadMember is killed. \n
- * Clears memory used by SquadMember object.
+ * @brief Outputs death message when a SquadMember is killed.
  */
 void SquadMember::die() const
 {
@@ -101,7 +102,7 @@ void SquadMember::die() const
 }
 
 /**
- * Damages the current SquadMember by subtracting the damage value of the enemy from the current HP value. \n
+ * @brief Damages the current SquadMember by subtracting the damage of the enemy from the current HP value. \n
  * @param damage - Damage Value of Enemy
  * @return If the SquadMember is killed
  */
@@ -112,22 +113,36 @@ int SquadMember::takeDamage(int damage)
 }
 
 /**
- * Generates a random name for a SquadMember.
+ * @brief Generates a random name for a SquadMember.
  * @return Generated Name
  */
 std::string SquadMember::generateName() {
     return "SquadMember";
 }
 
-
-
 /**
- * Prints the SquadMember's name, Damage and HP. Used for debugging.
- * @return Debug Message
+ * @brief Prints the SquadMember's name, Damage and HP.
  */
 void SquadMember::printStats() const
 {
     std::cout << "------------------------------------------" << std::endl;
     std::cout << "Type: " << this->getType() << " | HP: " << this->getHP() << " | DMG: " << this->getDmg() << std::endl;
     std::cout << "------------------------------------------" << std::endl << std::endl;
+}
+
+/*
+ * @brief Loads latest save.
+ */
+void SquadMember::loadSave(SquadMemberState* const save)
+{
+    state = save;
+}
+
+/**
+ * @brief Saves current state of SquadMember.
+ * @return State of SquadMember.
+ */
+SquadMemberState* SquadMember::saveGame()
+{
+    return new SquadMemberState(hp, dmg, type, name);
 }
