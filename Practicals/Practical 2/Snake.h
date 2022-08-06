@@ -19,9 +19,13 @@ class Snake: public Enemy
     Snake(int hp, int dmg, std::string& atk, std::string& name, std::string& def);
 
     //Template Methods
+
     bool hitSquadMember(SquadMember* z) override;
     bool getHit(SquadMember* z) override;
     void celebrate() override;
     void die() override;
     friend class SnakeFactory;
+
+    //Used for debugging purposes
+    friend void debugGame();
 };

@@ -11,7 +11,7 @@
 
 /**
  * Subclass of Enemy, represents a Jaguar enemy type. \n
- * All methods are private to uphold the factory method and only factories can produce cannibals.
+ * All methods are private to uphold the factory method and only factories can produce Jaguars.
  */
 class Jaguar: public Enemy
 {
@@ -24,4 +24,7 @@ class Jaguar: public Enemy
     void celebrate() override;
     void die() override;
     friend class JaguarFactory;
+
+    //Used for debugging purposes
+    friend void debugGame();
 };
