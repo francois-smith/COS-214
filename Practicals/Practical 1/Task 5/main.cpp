@@ -49,6 +49,6 @@ int main()
 
     //Question 5.2
     std::cout << "Result of A(4, 2):" << std::endl;
-    std::cout << A(4, 2) << std::endl;
+    std::cout << A(1, 2) << std::endl;
     return 0;
 }

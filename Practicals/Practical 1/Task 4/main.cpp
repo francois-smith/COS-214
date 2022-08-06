@@ -44,7 +44,7 @@ int main ()
     std::cout << "Array has " << countEven(array1, 10) <<  " even elements" << std::endl;
 
     //Array to be used in maximum() function
-    double array2[10] = {1.32, 3.56, 6.1, 8.456, 10.32113, 12, 54.87, 23, 66.21, 91.88};
+    double array2[10] = {1.32, 3.56, 6.1, 91.88 , 8.456, 10.32113, 12, 54.87, 23, 66.21};
     std::cout << "Largest element: " << *maximum(array2, 10) << std::endl;
 
     return 0;
