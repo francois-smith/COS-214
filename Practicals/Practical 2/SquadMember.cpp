@@ -5,6 +5,7 @@
  *      Author: Francois Smith
  */
 
+
 #include "SquadMember.h"
 
 SquadMember::SquadMember(int hp, int dmg)
