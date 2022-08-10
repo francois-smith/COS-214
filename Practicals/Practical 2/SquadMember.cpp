@@ -1,9 +1,4 @@
-/*
- * SquadMember.cpp
- *
- *  Created on: 05 Aug 2022
- *      Author: Francois Smith
- */
+
 
 #include "SquadMember.h"
 
