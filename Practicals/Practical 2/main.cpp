@@ -53,7 +53,6 @@ int generateRandomNumber(int min, int max)
 SquadMember* generateSquadMember()
 {
     //Generate Random Number
-    std::cout << "Generating random squad member...\n";
     int type = generateRandomNumber(0, 2);
 
     //Construct new SquadMember Randomly
@@ -65,8 +64,6 @@ SquadMember* generateSquadMember()
         case 2: newMember = new Soldier(); break;
     }
 
-    std::cout << newMember->getName() << " has been added to the squad!\n";
-    newMember->printStats();
     return newMember;
 }
 
@@ -186,38 +183,18 @@ bool fight(Enemy* enemy, std::vector<SquadMember*>* squad)
  */
 bool endGame(std::vector<SquadMember*>* squad, std::array<EnemyFactory*, 4>* factories)
 {
-    //Continuously loop until correct input is given
-    while(true)
+    for(SquadMember* member: *squad)
     {
-        std::string userChoice;
-        std::cout << "========== Do You Want To Redo [Y/N] =========" << std::endl;
-        std::cin >> userChoice;
-        std::cout << std::endl;
-
-        //Load last save if user wants to redo
-        if(userChoice == "Y" || userChoice == "y")
-        {
-            return false;
-        }
-        //If user does not want to redo, clear all memory and return true to end game
-        else if(userChoice == "N"  || userChoice == "n")
-        {
-            std::cout << "Game Over...\n";
-            //Delete all squad members
-            for(SquadMember* member: *squad)
-            {
-                delete member;
-            }
-            squad->clear();
-
-            //Delete all factories
-            for(EnemyFactory* factory: *factories)
-            {
-                delete factory;
-            }
-            return true;
-        }
+        delete member;
     }
+    squad->clear();
+
+    //Delete all factories
+    for(EnemyFactory* factory: *factories)
+    {
+        delete factory;
+    }
+    return true;
 }
 
 /**
@@ -294,6 +271,29 @@ bool startGame()
         else if(userChoice == "2")
         {
             return false;
+        }
+    }
+}
+
+/**
+ * @brief Asks user for difficulty they want to play on.
+ * @return - Selected Difficulty.
+ */
+int getDifficulty()
+{
+    while(true)
+    {
+        std::string userChoice;
+        std::cout << "============== Select Difficulty =============" << std::endl;
+        std::cout << "[1] Beginner" << std::endl;
+        std::cout << "[2] Intermediate" << std::endl;
+        std::cout << "[3] Challenge" << std::endl;
+        std::cout << "[4] Death" << std::endl;
+        std::cin >> userChoice;
+        std::cout << std::endl;
+        if(userChoice == "1" || userChoice == "2" || userChoice == "3" || userChoice == "4")
+        {
+            return std::stoi(userChoice);
         }
     }
 }
@@ -490,6 +490,26 @@ void debugGame()
     delete gameStore;
 }
 
+int userPrompt()
+{
+    while(true)
+    {
+        std::string userChoice;
+        std::cout << "What do you want to do?" << std::endl;
+        std::cout << "[1] Fight!" << std::endl;
+        std::cout << "[2] Squad Status" << std::endl;
+        std::cout << "[3] Save Game" << std::endl;
+        std::cout << "[4] Load Game" << std::endl;
+        std::cout << "[5] Exit Game" << std::endl;
+        std::cin >> userChoice;
+        std::cout << std::endl;
+        if(userChoice == "1" || userChoice == "2" || userChoice == "3" || userChoice == "4")
+        {
+            return stoi(userChoice);
+        }
+    }
+}
+
 int main() {
     //Run simulation(Random Scenarios)
     //First few steps of simulation are predefined, once third squad member is generated, the rest of the steps are random
@@ -498,96 +518,78 @@ int main() {
         //SquadMembers and Enemy Variables
         std::vector<SquadMember*>* squad = new std::vector<SquadMember*>();
         Enemy* enemy = nullptr;
+        int currentEnemy = 0;
         GameStore* gameStore = new GameStore(enemy, *squad);
         std::array<EnemyFactory*, 4> factories = {new SnakeFactory(), new JaguarFactory(), new GorillaFactory(), new CannibalFactory()};
 
         //Starting Message
         std::cout << "Adventure of a Life Time! \n" << std::endl;
+        std::cout << "Generating Squad..." << std::endl;
 
-        //Generate First Squad Member
-        squad->push_back(generateSquadMember());
-
-        //Generate First Enemy and Battle
-        std::cout << "Squad moves further into the island...\n";
-        enemy = generateRandomEnemy(factories);
-        saveGame(squad, enemy, gameStore);
-        system("pause");
-        if(fight(enemy, squad))
+        for (int i = 0; i < 4; ++i)
         {
-            std::cout << "The squad has won the battle!\n\n";
-            squadStatus(squad);
+            squad->push_back(generateSquadMember());
         }
-        else {
-            std::cout << "The squad has lost the battle!\n";
-            endGame(squad, &factories);
-            return 0;
-        }
+        squadStatus(squad);
 
-        //Generate Second SquadMember
-        std::cout << "Squad moves further into the island...\nSquad find a village and recruits a new member.\n";
-        squad->push_back(generateSquadMember());
-
-        //Generate Second Enemy and Battle
-        enemy = generateRandomEnemy(factories);
-        saveGame(squad, enemy, gameStore);
-        system("pause");
-        if(fight(enemy, squad)) {
-            std::cout << "The squad has won the battle!\n\n";
-        }
-        else {
-            std::cout << "The squad has lost the battle!\n";
-            endGame(squad, &factories);
-            return 0;
+        int difficulty = getDifficulty() -1;
+        int numEnemies = 0;
+        switch (difficulty) {
+            default: case 0: numEnemies = 2; break;
+            case 1: numEnemies = 3; break;
+            case 2: numEnemies = 5; break;
+            case 3: numEnemies = 7; break;
         }
 
-        //Generate Last Squad Member
-        std::cout << "While exploring the village, the squad saves " << squad->back()->getName() << "'s brother.\n";
-        squad->push_back(cloneMember(squad->back()));
-
-        //Main Gameplay Loop
-        while(!squad->empty())
+        for (int i = 0; i < numEnemies; ++i)
         {
-            //Output to show check point
-            std::cout << "Squad moves further into the island...\n";
-
-            //50% chance to generate a new random squad member
-            int index = generateRandomNumber(0, 9);
-            switch(index)
-            {
-                default: case 2: case 3: case 4: case 7: case 9: break;
-                case 0: case 1: case 5: case 6: case 8:
-                {
-                    squad->push_back(generateSquadMember());
-                }
-            }
-
-            //Always Generate Enemy to fight and save game
             enemy = generateRandomEnemy(factories);
-            squadStatus(squad);
-            saveGame(squad, enemy, gameStore);
-
-            system("pause");
-
-            //Run fight and check if squad has won
-            if(fight(enemy, squad)) {
-                std::cout << "The squad has won the battle!\n\n";
-            }
-            else {
-                std::cout << "The squad has lost the battle!\n";
-                if(endGame(squad, &factories))
-                {
+            input:
+            std::cout << i << "/" << numEnemies << " Defeated" << std::endl;
+            int input = userPrompt();
+            if(input == 1)
+            {
+                if(fight(enemy, squad)) {
+                    std::cout << "The squad has won the battle!\n\n";
+                }
+                else {
+                    std::cout << "The squad has lost the battle!\n";
+                    endGame(squad, &factories);
+                    std::cout << "Game Over\n";
+                    delete enemy;
                     return 0;
                 }
-                else
-                {
-                    loadGame(squad, enemy, gameStore);
-                }
+            }
+            else if(input == 2)
+            {
+                squadStatus(squad);
+                goto input;
+            }
+            else if(input == 3)
+            {
+                saveGame(squad, enemy, gameStore);
+                currentEnemy = i;
+                goto input;
+            }
+            else if(input == 4)
+            {
+                loadGame(squad, enemy, gameStore);
+                i = currentEnemy;
+                goto input;
+            }
+            else if(input == 5)
+            {
+                std::cout << "Thank you for playing!" << std::endl;
+                endGame(squad, &factories);
+                delete enemy;
+                return 0;
             }
         }
 
-        //All squad members have been killed ath this point
+        std::cout << "All enemies have been defeated! Game over, good job soldier." << std::endl;
+        std::cout << "Thank you for playing!" << std::endl;
         endGame(squad, &factories);
-        return 0;
+        delete enemy;
     }
     //Run Test Cases
     else
