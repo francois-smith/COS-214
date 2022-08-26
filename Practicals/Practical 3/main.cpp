@@ -134,6 +134,9 @@ bool isSlab()
     }
 }
 
+/**
+ * @brief Test environment for Section A
+ */
 void sectionA()
 {
     std::cout << "================ Task 2 ================" << std::endl;
@@ -186,11 +189,20 @@ void sectionA()
     delete[] chocolates;
 }
 
+/**
+ * Check if at least one of the pokemon is alive
+ * @param array - Array of pokemon
+ * @return - If at least one pokemon is alive
+ */
 bool isAlive(Pokemon** array)
 {
     return array[0]->isAlive() || array[1]->isAlive() || array[2]->isAlive();
 }
 
+/**
+ * @brief Outputs the status of the input Squad
+ * @param array - Array of pokemon
+ */
 void printStatus(Pokemon** array)
 {
     for(int i = 0; i < 3; i++)
@@ -199,6 +211,11 @@ void printStatus(Pokemon** array)
     }
 }
 
+/**
+ * @brief Finds Next Pokemon to attack
+ * @param array - Array of pokemon
+ * @return - Index of next pokemon to attack
+ */
 int findNextAlive(Pokemon** array)
 {
     for(int i = 0; i < 3; i++)
@@ -211,8 +228,11 @@ int findNextAlive(Pokemon** array)
     return -1;
 }
 
-int main() {
-    //sectionA();
+/**
+ * @brief Test environment for Section B
+ */
+void sectionB()
+{
     std::cout << "=================== Task 7 ================" << std::endl;
     std::cout << "Generating Pokemon Stats" << std::endl;
     Pokemon** playerPokemon = new Pokemon*[3];
@@ -274,6 +294,10 @@ int main() {
     }
     delete[] playerPokemon;
     delete[] enemyPokemon;
+}
 
+int main() {
+    sectionA();
+    sectionB();
     return 0;
 }
