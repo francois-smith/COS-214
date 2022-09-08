@@ -12,20 +12,18 @@
  * @brief Directory class is a leaf node in the file system. \n
  * Implements the composite  design pattern.
  */
-class Directory: public Node
+class File: public Node
 {
 public:
-
+    File(std::string name, std::string content) : Node(std::move(name)), content(std::move(content)) {};
+    ~File() override = default;
     std::string getContent() const;
     void setContent(std::string newContent);
-    ~Directory() override = default;
-
-protected:
-    Directory(std::string name, std::string content) : Node(std::move(name)), content(std::move(content)) {};
+    void printName() override;
+    void addNode(Node* newNode) override { delete newNode; };
+    bool removeNode(Node* node) override{ return false; };
 
 private:
     std::string content;
-
-    friend class FileFactory;
 };
 

@@ -1,7 +1,7 @@
 /*
  * Directory.h
  *
- *  Created on: 02 Sep 2022
+ *  Created on: 07 Sep 2022
  *      Author: Francois Smith
  */
 
@@ -13,15 +13,13 @@
 class Directory: public Node
 {
 public:
+    explicit Directory(std::string name);
+    ~Directory() override;
     void printName() override;
     void addNode(Node* newNode) override;
     bool removeNode(Node* node) override;
-    ~Directory() override;
 
 private:
     std::vector<Node*> nodes;
-
-protected:
-    explicit Directory(std::string name);
 };
 

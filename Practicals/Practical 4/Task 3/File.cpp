@@ -1,23 +1,23 @@
 /*
  * Directory.cpp
  *
- *  Created on: 02 Sep 2022
+ *  Created on: 07 Sep 2022
  *      Author: Francois Smith
  */
 
 #include "File.h"
 
-void Directory::printName()
+void File::printName()
 {
 	std::cout << this->getName() << ".file" << std::endl;
 }
 
-std::string Directory::getContent() const
+std::string File::getContent() const
 {
 	return this->content;
 }
 
-void Directory::setContent(std::string newContent)
+void File::setContent(std::string newContent)
 {
 	this->content = std::move(newContent);
 }
