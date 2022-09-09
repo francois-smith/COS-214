@@ -15,7 +15,7 @@ public:
     virtual void first() = 0;
     virtual void next() = 0;
     virtual bool hasNext() = 0;
-    virtual Node* current() = 0;
+    virtual void current() = 0;
 
 protected:
     Node* firstNode;
