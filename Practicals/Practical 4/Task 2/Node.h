@@ -24,6 +24,7 @@ public:
     virtual bool removeNode(Node* node) = 0;
     std::string getName() const;
     void setName(std::string aName);
+    virtual Node* clone() = 0;
 
 private:
     std::string name;

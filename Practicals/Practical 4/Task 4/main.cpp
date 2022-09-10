@@ -1,10 +1,13 @@
 #include "Directory.h"
 #include "File.h"
 #include "NodeIterator.h"
+#include "Root.h"
+#include "SnapshotStore.h"
 #include <stack>
 
 std::stack<Directory*> directoryTree;
-Directory* root;
+Root* root;
+SnapshotStore* snapshotStore;
 NodeIterator* directoryIterator;
 NodeIterator* fileIterator;
 
@@ -155,9 +158,9 @@ void MoveToRoot()
     {
         directoryTree.pop();
     }
-    directoryTree.push(root);
-    directoryIterator = root->createDirectoryIterator();
-    fileIterator = root->createFileIterator();
+    directoryTree.push(root->getRoot());
+    directoryIterator = root->getRoot()->createDirectoryIterator();
+    fileIterator = root->getRoot()->createFileIterator();
 }
 
 /**
@@ -221,20 +224,22 @@ int main()
     std::string currentPath = "root";
 
     //Initialize Default Variables
-    root = new Directory("root");
-    directoryTree.push(root);
+    snapshotStore = new SnapshotStore();
+    Directory* rootDir = new Directory("root");
+    root = new Root(rootDir);
+    directoryTree.push(rootDir);
 
     //Create First Directory with Subdirectory
     Directory* users = new Directory("users");
     users->addDirectory(new Directory("francois"));
-    root->addDirectory(users);
+    root->getRoot()->addDirectory(users);
 
     //Create First File and Empty Directory
-    root->addDirectory(new Directory("desktop"));
-    root->addFile(new File("root", "hello world"));
+    root->getRoot()->addDirectory(new Directory("desktop"));
+    root->getRoot()->addFile(new File("root", "hello world"));
 
-    directoryIterator = root->createDirectoryIterator();
-    fileIterator = root->createFileIterator();
+    directoryIterator = root->getRoot()->createDirectoryIterator();
+    fileIterator = root->getRoot()->createFileIterator();
 
     //Main Loop - Continues until user exits
     while(!exit)
@@ -306,6 +311,31 @@ int main()
         {
             if(!ListContents()) std::cout << "\t" << "Directory is empty" << std::endl;
         }
+        else if (input.substr(0, input.find(' ')) == "ss")
+        {
+            std::string ss = input.substr(input.find(' ') + 1);
+            bool found = false;
+
+            if (ss == "store")
+            {
+                found = true;
+                snapshotStore->storeSnapshot(root->createSnapshot());
+            }
+            else if (ss == "restore")
+            {
+                found = true;
+                root->restoreSnapshot(snapshotStore->getSnapshot());
+                MoveToRoot();
+                currentPath = "root";
+            }
+            else if(ss == "clear")
+            {
+                found = true;
+                Root::clearSnapshots(snapshotStore);
+            }
+
+            if (!found) std::cout << "Invalid Snapshot Command" << std::endl;
+        }
         else if (input == "exit")
         {
             exit = true;
@@ -316,6 +346,7 @@ int main()
         }
     }
 
+    delete snapshotStore;
     delete directoryIterator;
     delete fileIterator;
     delete root;

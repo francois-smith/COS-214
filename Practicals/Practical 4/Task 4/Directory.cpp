@@ -123,3 +123,17 @@ FileIterator *Directory::createFileIterator()
 {
     return new FileIterator(this->files);
 }
+
+Node* Directory::clone()
+{
+    Directory* newDirectory = new Directory(this->getName());
+    for(auto file : this->files)
+    {
+        newDirectory->addFile(dynamic_cast<File *>(file->clone()));
+    }
+    for(auto directory : this->directories)
+    {
+        newDirectory->addDirectory(dynamic_cast<Directory*>(directory->clone()));
+    }
+    return newDirectory;
+}

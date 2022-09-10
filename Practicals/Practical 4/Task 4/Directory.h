@@ -26,8 +26,10 @@ public:
     void addFile(File* newFile);
     void removeFile(File* file);
     bool listFiles();
+    Node* clone() override;
     DirectoryIterator* createDirectoryIterator();
     FileIterator* createFileIterator();
+
 
 private:
     std::vector<File*> files;

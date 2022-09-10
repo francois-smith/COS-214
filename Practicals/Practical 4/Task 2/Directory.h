@@ -18,6 +18,7 @@ public:
     void printName() override;
     void addNode(Node* newNode) override;
     bool removeNode(Node* node) override;
+    Node* clone() override;
 
 private:
     std::vector<Node*> nodes;

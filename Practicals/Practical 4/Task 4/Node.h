@@ -23,6 +23,7 @@ public:
     explicit Node(std::string aName) : name(std::move(aName)) {};
     virtual ~Node() = default;
     virtual void printName() = 0;
+    virtual Node* clone() = 0;
 
     //Getters and Setters
     std::string getName() const;

@@ -37,3 +37,13 @@ bool Directory::removeNode(Node* node)
 {
     return false;
 }
+
+Node* Directory::clone()
+{
+    Directory* newDirectory = new Directory(this->getName());
+    for (Node* node : this->nodes)
+    {
+        newDirectory->addNode(node->clone());
+    }
+    return newDirectory;
+}

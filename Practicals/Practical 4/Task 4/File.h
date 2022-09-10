@@ -18,6 +18,7 @@ public:
     File(std::string name, std::string content) : Node(std::move(name)), content(std::move(content)) {};
     ~File() override = default;
     void printName() override;
+    Node* clone() override;
 
     //Getters and Setters
     std::string getContent() const;

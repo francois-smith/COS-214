@@ -22,6 +22,7 @@ public:
     void printName() override;
     void addNode(Node* newNode) override { delete newNode; };
     bool removeNode(Node* node) override{ return false; };
+    Node* clone() override;
 
 private:
     std::string content;

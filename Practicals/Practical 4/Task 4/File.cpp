@@ -21,3 +21,8 @@ void File::setContent(std::string newContent)
 {
 	this->content = std::move(newContent);
 }
+
+Node* File::clone()
+{
+    return new File(this->getName(), this->getContent());
+}
