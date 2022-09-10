@@ -12,11 +12,24 @@
 Root::Root(Directory* root)
 {
     this->root = root;
+    this->antivirus = nullptr;
 }
 
 Root::~Root()
 {
+    delete antivirus;
     delete root;
+}
+
+void Root::installAntivirus(Antivirus* newAntivirus)
+{
+    delete this->antivirus;
+    this->antivirus = newAntivirus;
+}
+
+bool Root::activeAntivirus() const
+{
+    return this->antivirus != nullptr;
 }
 
 Snapshot* Root::createSnapshot()
