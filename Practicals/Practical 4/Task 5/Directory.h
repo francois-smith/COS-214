@@ -10,8 +10,6 @@
 #include "File.h"
 #include "DirectoryIterator.h"
 #include "FileIterator.h"
-#include <string>
-#include <vector>
 
 class Directory: public Node
 {
@@ -29,7 +27,6 @@ public:
     Node* clone() override;
     DirectoryIterator* createDirectoryIterator();
     FileIterator* createFileIterator();
-
 
 private:
     std::vector<File*> files;
