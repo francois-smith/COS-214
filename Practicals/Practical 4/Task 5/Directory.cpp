@@ -5,6 +5,7 @@
  *      Author: Francois Smith
  */
 
+#include "DirectoryObserver.h"
 #include "Directory.h"
 
 Directory::Directory(std::string name) : Node(std::move(name))
@@ -134,6 +135,10 @@ Node* Directory::clone()
     for(auto directory : this->directories)
     {
         newDirectory->addDirectory(dynamic_cast<Directory*>(directory->clone()));
+    }
+    for(Observer* observer : this->observerList)
+    {
+        new DirectoryObserver(newDirectory);
     }
     return newDirectory;
 }
