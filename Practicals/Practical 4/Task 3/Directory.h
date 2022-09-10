@@ -7,6 +7,9 @@
 
 #pragma once
 #include "Node.h"
+#include "File.h"
+#include "DirectoryIterator.h"
+#include "FileIterator.h"
 #include <string>
 #include <vector>
 
@@ -16,10 +19,18 @@ public:
     explicit Directory(std::string name);
     ~Directory() override;
     void printName() override;
-    void addNode(Node* newNode) override;
-    bool removeNode(Node* node) override;
+    void addDirectory(Directory* newDirectory);
+    void removeDirectory(Directory* directory);
+    bool listDirectories();
+    bool isEmpty();
+    void addFile(File* newFile);
+    void removeFile(File* file);
+    bool listFiles();
+    DirectoryIterator* createDirectoryIterator();
+    FileIterator* createFileIterator();
 
 private:
-    std::vector<Node*> nodes;
+    std::vector<File*> files;
+    std::vector<Directory*> directories;
 };
 

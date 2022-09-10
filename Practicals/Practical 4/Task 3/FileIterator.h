@@ -8,12 +8,21 @@
 #pragma once
 #include "NodeIterator.h"
 
-class FileIterator : public NodeIterator {
+class File;
+
+class FileIterator : public NodeIterator
+{
 public:
-    FileIterator(Node* node);
-    virtual ~FileIterator();
     void first() override;
     void next() override;
     bool hasNext() override;
-    void current() override;
+    Node* current() override;
+
+protected:
+    FileIterator(std::vector<File*> files);
+    virtual ~FileIterator();
+    int currentIndex;
+    std::vector<File*> filesList;
+
+    friend class Directory;
 };

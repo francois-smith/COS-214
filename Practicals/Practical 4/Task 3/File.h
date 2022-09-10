@@ -17,11 +17,11 @@ class File: public Node
 public:
     File(std::string name, std::string content) : Node(std::move(name)), content(std::move(content)) {};
     ~File() override = default;
+    void printName() override;
+
+    //Getters and Setters
     std::string getContent() const;
     void setContent(std::string newContent);
-    void printName() override;
-    void addNode(Node* newNode) override { delete newNode; };
-    bool removeNode(Node* node) override{ return false; };
 
 private:
     std::string content;

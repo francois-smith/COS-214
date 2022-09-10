@@ -22,16 +22,11 @@ class Node
 public:
     explicit Node(std::string aName) : name(std::move(aName)) {};
     virtual ~Node() = default;
-    virtual void addDirectory(Directory* newDirectory) = 0;
-    virtual bool removeDirectory() = 0;
-    virtual bool isEmpty() = 0;
-    virtual void addFile(File* newFile) = 0;
-    virtual bool removeFile() = 0;
-    virtual bool listFiles() = 0;
+    virtual void printName() = 0;
 
     //Getters and Setters
     std::string getName() const;
-    void setName(std::string aName);
+    void rename(std::string aName);
 
 private:
     std::string name;

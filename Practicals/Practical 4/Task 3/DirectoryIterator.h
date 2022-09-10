@@ -6,18 +6,21 @@
  */
 
 #pragma once
-
 #include "NodeIterator.h"
-#include "Directory.h"
+class Directory;
 
 class DirectoryIterator: public NodeIterator {
 public:
-    explicit DirectoryIterator(Node* first) : NodeIterator(first) {};
     void first() override;
     void next() override;
     bool hasNext() override;
     Node* current() override;
 
-private:
+protected:
+    DirectoryIterator(std::vector<Directory*> directories);
+    virtual ~DirectoryIterator();
+    int currentIndex;
+    std::vector<Directory*> directoriesList;
 
+    friend class Directory;
 };

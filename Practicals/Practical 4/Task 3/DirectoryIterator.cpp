@@ -5,24 +5,42 @@
  *      Author: Francois Smith
  */
 
+#include "Directory.h"
 #include "DirectoryIterator.h"
+
+DirectoryIterator::DirectoryIterator(std::vector<Directory*> directories)
+{
+    this->currentIndex = 0;
+    for(auto directory : directories)
+    {
+        this->directoriesList.push_back(directory);
+    }
+}
+
+DirectoryIterator::~DirectoryIterator()
+{
+    while(!this->directoriesList.empty())
+    {
+        this->directoriesList.pop_back();
+    }
+}
 
 void DirectoryIterator::first()
 {
-    this->currentNode = this->firstNode;
+    this->currentIndex = 0;
 }
 
 void DirectoryIterator::next()
 {
-    this->currentNode = this->currentNode->getNext();
+    this->currentIndex++;
 }
 
 bool DirectoryIterator::hasNext()
 {
-    return false;
+    return this->currentIndex < this->directoriesList.size();
 }
 
-Node *DirectoryIterator::current()
+Node* DirectoryIterator::current()
 {
-    return this->currentNode;
+    return directoriesList.at(this->currentIndex);
 }

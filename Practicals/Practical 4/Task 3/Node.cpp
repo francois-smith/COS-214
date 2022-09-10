@@ -12,7 +12,7 @@ std::string Node::getName() const
 	return this->name;
 }
 
-void Node::setName(std::string newName)
+void Node::rename(std::string newName)
 {
 	this->name = std::move(newName);
 }
